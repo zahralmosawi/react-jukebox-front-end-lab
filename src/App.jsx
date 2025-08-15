@@ -1,5 +1,11 @@
-const App = () => {
-  return <h1>Hello world!</h1>;
-};
+import TrackList from './components/Home/TrackList'
 
-export default App;
+const App = () => {
+  return(
+    <>
+    <TrackList/>
+    </>
+  )
+}
+
+export default App
