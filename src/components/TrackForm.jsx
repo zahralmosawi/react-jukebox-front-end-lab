@@ -2,7 +2,7 @@ import { useState } from "react"
 
 import {create} from '../../lib/api'
 
-const TrackForm = () => {
+const TrackForm = ({setFormIsShown}) => {
     const [formData, setFormData] = useState({
         title: '',
         artist: ''
