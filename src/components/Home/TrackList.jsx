@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import DeleteTrackButton from './DeleteTrackButton'
 
-const TrackList = () => {
+const TrackList = ({editedTrack, onPlay}) => {
     const [tracks, setTracks] = useState([])
 
     const getAllTracks = async () => {
@@ -15,20 +16,26 @@ const TrackList = () => {
     }, [])
 
     return(
-        <>
-        <h2>Track List</h2>
+        <div>
         {
             <ol>
                 {
                     tracks.map(track => {
                         return(
-                          <p>{track.title} by {track.artist}</p>  
+                            <>
+                            <li key={track._id}>
+                             <p>{track.title} by {track.artist}</p> 
+                             <button onClick={() => onPlay(track)}>Play</button>
+                             <button onClick={() => editedTrack(track)}>Edit</button>
+                             <DeleteTrackButton trackId= {track._id} getAllTracks = {getAllTracks}/>
+                            </li>
+                            </> 
                         )
                     })
                 }
             </ol>
         }
-        </>
+        </div>
     )
 
 }
